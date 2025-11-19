@@ -2,6 +2,8 @@ package com.example.guia_league_of_legends.ui.champions
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -30,6 +32,7 @@ fun ChampionDetailScreen(championId: String, viewModel: ChampionViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .background(Color(0xFF0F0F0F))
             .padding(16.dp),
         verticalArrangement = Arrangement.Top
