@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Ícono de advertencia negro/dorado -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M1,21h22L12,2 1,21z"/>
+    <path
+        android:fillColor="#DAA520"
+        android:pathData="M12,16c-0.55,0 -1,0.45 -1,1s0.45,1 1,1 1,-0.45 1,-1 -0.45,-1 -1,-1zm1,-6h-2v4h2v-4z"/>
+</vector>
