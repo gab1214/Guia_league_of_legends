@@ -3,6 +3,7 @@ package com.example.guia_league_of_legends.ui.objectives
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -81,39 +82,59 @@ fun GameModeDetailScreen(modeId: String) {
         return
     }
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
             .background(Color(0xFF0F0F0F))
+            .padding(bottom = 72.dp)
             .padding(16.dp)
     ) {
-        Image(
-            painter = painterResource(id = mode.mapImageRes),
-            contentDescription = mode.name,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-        )
+        item {
+            Image(
+                painter = painterResource(id = mode.mapImageRes),
+                contentDescription = mode.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            )
+        }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        item { Spacer(modifier = Modifier.height(12.dp)) }
 
-        Text(mode.name, style = MaterialTheme.typography.headlineMedium, color = Color(0xFFFFD700))
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(mode.description, style = MaterialTheme.typography.bodyMedium, color = Color.White)
-        Text(
-            text = "Detalles estratégicos:",
-            style = MaterialTheme.typography.titleMedium,
-            color = Color(0xFFFFD700),
-            modifier = Modifier.padding(top = 16.dp)
-        )
+        item {
+            Text(
+                text = mode.name,
+                style = MaterialTheme.typography.headlineMedium,
+                color = Color(0xFFFFD700)
+            )
+        }
 
-        Text(
-            text = mode.extraInfo,
-            style = MaterialTheme.typography.bodyMedium,
-            color = Color.White,
-            modifier = Modifier.padding(top = 10.dp)
-        )
+        item { Spacer(modifier = Modifier.height(8.dp)) }
 
+        item {
+            Text(
+                text = mode.description,
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.White
+            )
+        }
+
+        item {
+            Text(
+                text = "Detalles estratégicos:",
+                style = MaterialTheme.typography.titleMedium,
+                color = Color(0xFFFFD700),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        }
+
+        item {
+            Text(
+                text = mode.extraInfo,
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.White,
+                modifier = Modifier.padding(top = 10.dp)
+            )
+        }
     }
 }
