@@ -2,6 +2,7 @@ package com.example.guia_league_of_legends.ui.champions
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -29,53 +30,56 @@ fun ChampionDetailScreen(championId: String, viewModel: ChampionViewModel) {
 
     val (champion, detail) = championPair
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(Color(0xFF0F0F0F))
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Top
+            .padding(bottom = 72.dp) // espacio para el menú inferior
+            .padding(16.dp)
     ) {
-        // Imagen del campeón
-        AsyncImage(
-            model = champion.imageUrl,
-            contentDescription = champion.name,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-        )
+        item {
+            AsyncImage(
+                model = champion.imageUrl,
+                contentDescription = champion.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            )
+        }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        item { Spacer(modifier = Modifier.height(12.dp)) }
 
-        // Nombre y descripción
-        Text(champion.name, style = MaterialTheme.typography.headlineMedium, color = Color(0xFFFFD700))
-        Text(champion.description, style = MaterialTheme.typography.bodyMedium, color = Color.White)
-        Text(detail.blurb, style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+        item {
+            Text(champion.name, style = MaterialTheme.typography.headlineMedium, color = Color(0xFFFFD700))
+            Text(champion.description, style = MaterialTheme.typography.bodyMedium, color = Color.White)
+            Text(detail.blurb, style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+        }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        item { Spacer(modifier = Modifier.height(16.dp)) }
 
-        // Info basica
-        Text("Atributos", style = MaterialTheme.typography.titleMedium, color = Color(0xFFFFD700))
-        Text("Ataque: ${detail.info.attack}", color = Color.White)
-        Text("Defensa: ${detail.info.defense}", color = Color.White)
-        Text("Magia: ${detail.info.magic}", color = Color.White)
-        Text("Dificultad: ${detail.info.difficulty}", color = Color.White)
+        item {
+            Text("Atributos", style = MaterialTheme.typography.titleMedium, color = Color(0xFFFFD700))
+            Text("Ataque: ${detail.info.attack}", color = Color.White)
+            Text("Defensa: ${detail.info.defense}", color = Color.White)
+            Text("Magia: ${detail.info.magic}", color = Color.White)
+            Text("Dificultad: ${detail.info.difficulty}", color = Color.White)
+        }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        item { Spacer(modifier = Modifier.height(16.dp)) }
 
-        // Stats completos
-        Text("Estadísticas", style = MaterialTheme.typography.titleMedium, color = Color(0xFFFFD700))
-        Text("HP: ${detail.stats.hp} (+${detail.stats.hpperlevel} por nivel)", color = Color.White)
-        Text("MP: ${detail.stats.mp} (+${detail.stats.mpperlevel} por nivel)", color = Color.White)
-        Text("Armadura: ${detail.stats.armor} (+${detail.stats.armorperlevel} por nivel)", color = Color.White)
-        Text("Resistencia mágica: ${detail.stats.spellblock} (+${detail.stats.spellblockperlevel} por nivel)", color = Color.White)
-        Text("Rango de ataque: ${detail.stats.attackrange}", color = Color.White)
-        Text("Velocidad de ataque: ${detail.stats.attackspeed} (+${detail.stats.attackspeedperlevel}% por nivel)", color = Color.White)
-        Text("Velocidad de movimiento: ${detail.stats.movespeed}", color = Color.White)
-        Text("Regeneración de HP: ${detail.stats.hpregen} (+${detail.stats.hpregenperlevel} por nivel)", color = Color.White)
-        Text("Regeneración de MP: ${detail.stats.mpregen} (+${detail.stats.mpregenperlevel} por nivel)", color = Color.White)
-        Text("Daño crítico: ${detail.stats.crit} (+${detail.stats.critperlevel} por nivel)", color = Color.White)
-        Text("Daño de ataque: ${detail.stats.attackdamage} (+${detail.stats.attackdamageperlevel} por nivel)", color = Color.White)
+        item {
+            Text("Estadísticas", style = MaterialTheme.typography.titleMedium, color = Color(0xFFFFD700))
+            Text("HP: ${detail.stats.hp} (+${detail.stats.hpperlevel} por nivel)", color = Color.White)
+            Text("MP: ${detail.stats.mp} (+${detail.stats.mpperlevel} por nivel)", color = Color.White)
+            Text("Armadura: ${detail.stats.armor} (+${detail.stats.armorperlevel} por nivel)", color = Color.White)
+            Text("Resistencia mágica: ${detail.stats.spellblock} (+${detail.stats.spellblockperlevel} por nivel)", color = Color.White)
+            Text("Rango de ataque: ${detail.stats.attackrange}", color = Color.White)
+            Text("Velocidad de ataque: ${detail.stats.attackspeed} (+${detail.stats.attackspeedperlevel}% por nivel)", color = Color.White)
+            Text("Velocidad de movimiento: ${detail.stats.movespeed}", color = Color.White)
+            Text("Regeneración de HP: ${detail.stats.hpregen} (+${detail.stats.hpregenperlevel} por nivel)", color = Color.White)
+            Text("Regeneración de MP: ${detail.stats.mpregen} (+${detail.stats.mpregenperlevel} por nivel)", color = Color.White)
+            Text("Daño crítico: ${detail.stats.crit} (+${detail.stats.critperlevel} por nivel)", color = Color.White)
+            Text("Daño de ataque: ${detail.stats.attackdamage} (+${detail.stats.attackdamageperlevel} por nivel)", color = Color.White)
+        }
     }
 }
+
